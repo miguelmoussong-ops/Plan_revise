@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plan’Révise — Réussis tes examens sans stress</title>
+<style>
+:root{--bg:#faf6ff;--card:#fff;--ink:#241a3a;--muted:#6b6080;--v:#5b21b6;--o:#f97316;--p:#db2777;--pale:#efe7fd;--line:#e1d6f5;--ok:#0f9d6b;color-scheme:light dark;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151022;--card:#201838;--ink:#f1ecff;--muted:#b4a8d0;--v:#a78bfa;--pale:#2c2250;--line:#3a2e66;--ok:#4ade80}}
+:root[data-theme="dark"]{--bg:#151022;--card:#201838;--ink:#f1ecff;--muted:#b4a8d0;--v:#a78bfa;--pale:#2c2250;--line:#3a2e66;--ok:#4ade80}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:70px}
+header{background:linear-gradient(135deg,#5b21b6,#db2777 70%,#f97316);color:#fff;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 16px}
+header div,main{max-width:760px;margin:auto}
+h1{margin:0;font-size:1.4rem}header p{margin:2px 0 0;opacity:.92;font-size:.9rem}
+main{padding:14px}
+.tab{display:none}.tab.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}
+h2{font-size:1.05rem;margin:0 0 8px;color:var(--v)}
+label{display:block;font-size:.85rem;font-weight:600;margin:8px 0 3px}
+select,input{width:100%;padding:11px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sub{display:grid;grid-template-columns:1fr 70px 100px 34px;gap:6px;align-items:center;margin-bottom:6px}
+.sub input,.sub select{padding:8px;font-size:.9rem}.sub b{font-size:.92rem}
+.x{background:var(--pale);color:var(--p);border:0;border-radius:10px;font-weight:800;height:34px}
+button{cursor:pointer;font:inherit}
+.btn{border:0;border-radius:14px;padding:14px;font-weight:800;color:#fff;background:linear-gradient(135deg,#5b21b6,#db2777);width:100%;margin-top:10px}
+.btn.o{background:linear-gradient(135deg,#f97316,#db2777)}.btn.s{background:var(--pale);color:var(--v)}
+.s{color:var(--muted);font-size:.85rem}.chk{display:flex;align-items:center;gap:8px;font-weight:500}.chk input{width:auto}
+.day{border-left:6px solid var(--v)}.day.today{border-left-color:var(--o);box-shadow:0 0 0 2px var(--o) inset}.day.past{opacity:.6}
+.dh{display:flex;justify-content:space-between;font-weight:800;margin-bottom:6px}.dh span{color:var(--o)}
+.it{display:flex;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-weight:500}.it input{width:22px;height:22px;accent-color:#db2777}
+.it.d label{text-decoration:line-through;color:var(--muted)}
+.bar{height:12px;background:var(--pale);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#f97316,#db2777);width:0}
+.big{font-size:3.4rem;font-weight:800;text-align:center;color:var(--v);letter-spacing:2px}
+.modes{display:flex;gap:8px;margin-bottom:8px}.modes button{flex:1;border:0;border-radius:12px;padding:10px;background:var(--pale);color:var(--v);font-weight:700}.modes .on{background:var(--v);color:#fff}
+.tip{display:flex;gap:10px;margin-bottom:10px}.tip i{font-style:normal;font-size:1.4rem}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;padding:9px 4px;color:var(--muted);font-size:.78rem}nav button.on{color:var(--p);font-weight:800}nav span{display:block;font-size:1.3rem}
+</style>
+</head>
+<body>
+<header><div><h1>Plan’Révise</h1><p>Un plan de révision malin pour le Probatoire et le Bac</p></div></header>
+<main>
+<section id="t-plan" class="tab on">
+ <div id="setup">
+  <div class="card"><h2>1. Ton examen</h2>
+   <div class="row2"><div><label for="exam">Examen</label><select id="exam"><option>Probatoire</option><option selected>Baccalauréat</option><option>Autre examen</option></select></div>
+   <div><label for="edate">Date de l’examen</label><input id="edate" type="date"></div></div>
+   <div class="row2"><div><label for="date">Début des révisions</label><input id="date" type="date"></div><div><div><label for="hrs">Séances de 1 h / jour</label><select id="hrs"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option></select></div></div>
+   <div class="row2"><div><label for="serie">Ta série</label><select id="serie"><option>A4</option><option>C</option><option>D</option><option>TI</option><option>Autre</option></select></div><div><label class="chk" style="margin-top:30px"><input id="sun" type="checkbox" checked> Dimanche : repos</label></div></div></div>
+  <div class="card"><h2>2. Tes matières</h2><p class="s" style="margin:0 0 8px">Coefficient (1 à 5) et difficulté pour toi. Les matières à fort coefficient et difficiles reçoivent plus de temps. Vérifie les coefficients de ta série.</p>
+   <div id="subs"></div>
+   <div class="row2" style="margin-top:8px"><input id="newsub" placeholder="Ajouter une matière"><button class="btn s" style="margin:0" id="add">+ Ajouter</button></div></div>
+  <button class="btn" id="gen">Créer mon plan de révision</button>
+ </div>
+ <div id="plan" hidden></div>
+</section>
+<section id="t-timer" class="tab">
+ <div class="card"><h2>Minuteur de concentration</h2>
+  <div class="modes"><button id="m25" class="on">Travail 25 min</button><button id="m5">Pause 5 min</button></div>
+  <div class="big" id="clock">25:00</div>
+  <p class="s" id="tmsg" style="text-align:center">Pose ton téléphone, ferme les distractions, concentre-toi sur une seule matière.</p>
+  <button class="btn" id="tgo">Démarrer</button><button class="btn s" id="trs">Remettre à zéro</button></div>
+</section>
+<section id="t-tips" class="tab">
+ <div class="card"><h2>Gérer le stress des examens</h2>
+  <div class="tip"><i>😴</i><div><b>Dors 7 à 8 heures.</b> Le cerveau retient la nuit : réviser toute la nuit fait perdre plus qu’on ne gagne.</div></div>
+  <div class="tip"><i>⏱️</i><div><b>Révise par séances courtes</b> (25 à 50 min) avec une vraie pause, sans téléphone.</div></div>
+  <div class="tip"><i>✍️</i><div><b>Refais des sujets d’examens</b> chronométrés, puis corrige-toi. C’est le meilleur entraînement.</div></div>
+  <div class="tip"><i>🗣️</i><div><b>Explique la leçon à voix haute</b> à un camarade : ce que tu sais expliquer, tu le retiens.</div></div>
+  <div class="tip"><i>🍽️</i><div><b>Mange et bois de l’eau.</b> Un cerveau fatigué ou affamé travaille mal.</div></div>
+  <div class="tip"><i>🌬️</i><div><b>Respiration calme :</b> inspire 4 secondes, souffle 6 secondes, 5 fois. Ça aide avant une épreuve.</div></div>
+  <div class="tip"><i>🤝</i><div><b>Parle de ton stress</b> à un adulte de confiance ou à un enseignant. Si l’angoisse est très forte, demande de l’aide.</div></div></div>
+</section>
+</main>
+<nav><button data-t="plan" class="on"><span>📅</span>Mon plan</button><button data-t="timer"><span>⏱️</span>Minuteur</button><button data-t="tips"><span>💡</span>Conseils</button></nav>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const PRE={A4:['Langue française','Littérature','Philosophie','Histoire-Géographie','Anglais','Espagnol','Mathématiques','ECM'],
+ C:['Mathématiques','Physique-Chimie','SVT','Philosophie','Langue française','Anglais','Histoire-Géographie','Informatique'],
+ D:['SVT','Mathématiques','Physique-Chimie','Philosophie','Langue française','Anglais','Histoire-Géographie'],
+ TI:['Informatique','Mathématiques','Physique-Chimie','Langue française','Anglais','Philosophie'],
+ Autre:['Mathématiques','Langue française','Anglais','Philosophie','Histoire-Géographie']};
+const store={get(){try{return JSON.parse(localStorage.getItem('planrevise1'))}catch(e){return null}},set(v){try{localStorage.setItem('planrevise1',JSON.stringify(v))}catch(e){}}};
+let subs=[];
+function loadPre(){subs=PRE[$('serie').value].map(n=>({n,c:2,d:2}));drawSubs();}
+function drawSubs(){$('subs').innerHTML=subs.map((s,i)=>`<div class="sub"><b>${esc(s.n)}</b>
+ <select data-i="${i}" data-k="c">${[1,2,3,4,5].map(v=>`<option${v==s.c?' selected':''}>${v}</option>`).join('')}</select>
+ <select data-i="${i}" data-k="d">${[['1','Facile'],['2','Moyen'],['3','Difficile']].map(([v,l])=>`<option value="${v}"${v==s.d?' selected':''}>${l}</option>`).join('')}</select>
+ <button class="x" data-del="${i}" aria-label="Retirer">×</button></div>`).join('');}
+$('subs').addEventListener('change',e=>{const i=e.target.dataset.i;if(i!==undefined)subs[i][e.target.dataset.k]=+e.target.value;});
+$('subs').addEventListener('click',e=>{if(e.target.dataset.del!==undefined){subs.splice(+e.target.dataset.del,1);drawSubs();}});
+$('add').onclick=()=>{const v=$('newsub').value.trim().slice(0,30);if(v){subs.push({n:v,c:2,d:2});$('newsub').value='';drawSubs();}};
+$('serie').onchange=loadPre;
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const fromIso=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c);};
+$('date').value=iso(new Date());{const e=new Date();e.setMonth(e.getMonth()+2);$('edate').value=iso(e);}
+// Planification : « round-robin pondéré lissé »
+function schedule(subs,days,hrs){
+ const W=subs.reduce((t,s)=>t+s.c*s.d,0),sc=subs.map(()=>0),out=[];
+ for(let k=0;k<days*hrs;k++){let b=0;subs.forEach((s,i)=>{sc[i]+=s.c*s.d;if(sc[i]>sc[b])b=i;});sc[b]-=W;out.push(subs[b].n);}
+ return out;}
+$('gen').onclick=()=>{
+ if(!subs.length){alert('Ajoute au moins une matière.');return;}
+ const start=fromIso($('date').value||iso(new Date()));
+ if(!$('edate').value){alert('Choisis la date de ton examen.');return;}
+ const exam=fromIso($('edate').value);
+ const dates=[];for(let d=new Date(start);d<exam;d.setDate(d.getDate()+1)){if($('sun').checked&&d.getDay()===0)continue;dates.push(iso(d));}
+ if(dates.length<2){alert('Il faut au moins 2 jours de révision avant l’examen.');return;}
+ const hrs=+$('hrs').value,list=schedule(subs,dates.length-1,hrs);
+ const plan=dates.map((d,i)=>({d,f:i===dates.length-1,it:i===dates.length-1?['Relecture légère des fiches','Préparer ton matériel et dormir tôt']:list.slice(i*hrs,(i+1)*hrs),done:[]}));
+ store.set({exam:$('exam').value,examDate:iso(exam),plan});show();
+};
+function show(){
+ const st=store.get();if(!st){$('setup').hidden=false;$('plan').hidden=true;return;}
+ $('setup').hidden=true;$('plan').hidden=false;
+ const today=iso(new Date()),ex=fromIso(st.examDate);
+ let total=0,done=0;st.plan.forEach(p=>{total+=p.it.length;p.it.forEach((_,i)=>{if(p.done[i])done++;});});
+ const left=Math.ceil((ex-new Date(new Date().setHours(0,0,0,0)))/864e5);
+ let h=`<div class="card"><h2>${esc(st.exam)} · ${left>0?'J-'+left:left===0?'c’est aujourd’hui':'terminé'}</h2><div class="bar"><i style="width:${total?Math.round(done*100/total):0}%"></i></div><p class="s" style="margin:6px 0 0">${done} séances faites sur ${total}</p></div>`;
+ st.plan.forEach((p,di)=>{const d=fromIso(p.d),cls=p.d===today?'today':p.d<today?'past':'';
+  const label=d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
+  h+=`<div class="card day ${cls}"><div class="dh">${label}${p.d===today?'<span>Aujourd’hui</span>':''}</div>`+p.it.map((n,i)=>`<div class="it${p.done[i]?' d':''}"><input type="checkbox" id="c${di}_${i}" data-di="${di}" data-i="${i}"${p.done[i]?' checked':''}><label for="c${di}_${i}">${p.f?'':'1 h · '}${esc(n)}</label></div>`).join('')+'</div>';});
+ h+='<button class="btn o" id="copy">Copier mon plan</button><button class="btn s" id="reset">Créer un nouveau plan</button>';
+ $('plan').innerHTML=h;
+ const t=document.querySelector('.day.today');if(t)t.scrollIntoView({block:'center'});
+}
+$('plan').addEventListener('change',e=>{const di=e.target.dataset.di;if(di===undefined)return;const st=store.get();st.plan[di].done[+e.target.dataset.i]=e.target.checked;store.set(st);show();});
+$('plan').addEventListener('click',async e=>{
+ if(e.target.id==='reset'){if(confirm('Supprimer ton plan actuel ?')){try{localStorage.removeItem('planrevise1')}catch(x){}show();}}
+ if(e.target.id==='copy'){const st=store.get();const txt=st.plan.map(p=>fromIso(p.d).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'})+' : '+p.it.join(', ')).join('\n');
+  try{await navigator.clipboard.writeText(txt);e.target.textContent='Copié !';}catch(x){e.target.textContent='Copie impossible';}setTimeout(()=>e.target.textContent='Copier mon plan',1800);}});
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('t-'+b.dataset.t).classList.add('on');window.scrollTo(0,0);});
+// minuteur
+let mode=25,left=1500,iv=null;
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+function setMode(m){mode=m;left=m*60;clearInterval(iv);iv=null;$('clock').textContent=fmt(left);$('tgo').textContent='Démarrer';$('m25').classList.toggle('on',m===25);$('m5').classList.toggle('on',m===5);}
+$('m25').onclick=()=>setMode(25);$('m5').onclick=()=>setMode(5);$('trs').onclick=()=>setMode(mode);
+$('tgo').onclick=()=>{if(iv){clearInterval(iv);iv=null;$('tgo').textContent='Reprendre';return;}
+ $('tgo').textContent='Pause';iv=setInterval(()=>{left--;$('clock').textContent=fmt(left);if(left<=0){clearInterval(iv);iv=null;try{navigator.vibrate&&navigator.vibrate([300,150,300]);}catch(e){}
+  $('tmsg').textContent=mode===25?'Bravo ! Prends 5 minutes de pause.':'Pause terminée : on reprend !';setMode(mode===25?5:25);}},1000);};
+loadPre();show();
+</script>
+</body>
+</html>
